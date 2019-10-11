@@ -17,8 +17,10 @@ from django.contrib import admin
 from django.urls import path
 
 from clubs.views import ClubListView
+from players.views import PlayerListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('clubs', ClubListView.as_view(), name='club-list'),
+    path('players', PlayerListView.as_view(), name='player-list'),
 ]

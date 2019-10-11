@@ -1,0 +1,8 @@
+<h1>Players</h1>
+<ul>
+  {% for player in object_list %}
+    <li>{{ player.name }} - {{ player.position }} star</li>
+  {% empty %}
+    <li>No player yet.</li>
+  {% endfor %}
+</ul>
