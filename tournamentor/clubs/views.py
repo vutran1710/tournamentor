@@ -1,3 +1,8 @@
 from django.shortcuts import render
+from django.views.generic.list import ListView
+from .models import Club
 
-# Create your views here.
+
+class ClubListView(ListView):
+    model = Club
+    paginate_by = 100

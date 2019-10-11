@@ -1,0 +1,8 @@
+<h1>Clubs</h1>
+<ul>
+  {% for club in object_list %}
+    <li>{{ club.name }} - {{ club.rating }} star</li>
+  {% empty %}
+    <li>No club yet.</li>
+  {% endfor %}
+</ul>
