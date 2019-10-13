@@ -41,8 +41,3 @@ class Game(models.Model):
     time = models.DateTimeField(auto_now=False, auto_now_add=False, null=True)
     tournament = models.ForeignKey(Tournament, on_delete=models.CASCADE, null=True)
     tie_type = models.CharField(max_length=30, choices=TieType.choices, default=TieType.single)
-
-
-class TwoLeggedTie(models.Model):
-    first_leg = models.OneToOneField(Game, on_delete=models.CASCADE, related_name='first_leg', unique=True)
-    second_leg = models.OneToOneField(Game, on_delete=models.CASCADE, related_name='second_leg', unique=True)

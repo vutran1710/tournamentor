@@ -1,5 +1,9 @@
 from django.views.generic.list import ListView
-from .models import *
+from .models import (
+    Tournament,
+    Team,
+    Game
+)
 
 
 class TournamentListView(ListView):
