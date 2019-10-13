@@ -29,8 +29,8 @@ class Team(models.Model):
 class Game(models.Model):
 
     class TieType(DjangoChoices):
-        single_legged = ChoiceItem('Single-legged')
-        two_legged = ChoiceItem('Two-legged')
+        single = ChoiceItem('Single-legged')
+        twotie = ChoiceItem('Two-legged')
 
     home_team = models.ForeignKey(Team, on_delete=models.SET_NULL, null=True, related_name='home_team')
     home_club = models.ForeignKey(Club, on_delete=models.SET_NULL, null=True, related_name='home_club')
@@ -40,7 +40,7 @@ class Game(models.Model):
     away_result = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(20)], null=True)
     time = models.DateTimeField(auto_now=False, auto_now_add=False, null=True)
     tournament = models.ForeignKey(Tournament, on_delete=models.CASCADE, null=True)
-    tie_type = models.CharField(max_length=30, choices=TieType.choices)
+    tie_type = models.CharField(max_length=30, choices=TieType.choices, default=TieType.single)
 
 
 class TwoLeggedTie(models.Model):
