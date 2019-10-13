@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'clubs.apps.ClubsConfig',
     'players.apps.PlayersConfig',
     'games.apps.GamesConfig',
+    'tournaments.apps.TournamentsConfig',
 ]
 
 MIDDLEWARE = [

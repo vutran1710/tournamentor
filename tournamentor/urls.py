@@ -17,9 +17,12 @@ from django.contrib import admin
 from django.urls import path
 from clubs.views import ClubListView
 from players.views import PlayerListView
+from tournaments.views import LeagueTourListView, KnockoutTourListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('clubs', ClubListView.as_view(), name='club-list'),
     path('players', PlayerListView.as_view(), name='player-list'),
+    path('leagues', LeagueTourListView.as_view(), name='league-tour-list'),
+    path('knockout', KnockoutTourListView.as_view(), name='knockout-tour-list'),
 ]
