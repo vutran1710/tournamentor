@@ -11,4 +11,7 @@ django = "*"
 django-choices = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.7.2"
+
+[scripts]
+dev = "pipenv run django-admin runserver"
