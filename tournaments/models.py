@@ -1,5 +1,8 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes.fields import GenericForeignKey
+from games.models import Game
 
 
 class BaseTourModel(models.Model):
@@ -18,3 +21,13 @@ class KnockoutTour(BaseTourModel):
     round_number = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(32)])
     knockout_legs = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(2)], default=1)
     final_legs = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(2)], default=1)
+
+
+class Fixture(models.Model):
+    time = models.DateTimeField(null=True)
+    game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    TOUR_CHOICES = models.Q(model='LeagueTour') | models.Q(model='KnockoutTour')
+    tour_type = models.ForeignKey(ContentType, on_delete=models.CASCADE, limit_choices_to=TOUR_CHOICES)
+    tour_id = models.PositiveIntegerField()
+    tour = GenericForeignKey('tour_type', 'tour_id')
+    round = models.PositiveSmallIntegerField()

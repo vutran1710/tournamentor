@@ -12,6 +12,7 @@ pylint = "*"
 [packages]
 django = "*"
 django-choices = "*"
+psycopg2 = "*"
 
 [requires]
 python_version = "3.7.2"
