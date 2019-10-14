@@ -26,8 +26,7 @@ class KnockoutTour(BaseTourModel):
 class Fixture(models.Model):
     time = models.DateTimeField(null=True)
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
-    TOUR_CHOICES = models.Q(model='LeagueTour') | models.Q(model='KnockoutTour')
-    tour_type = models.ForeignKey(ContentType, on_delete=models.CASCADE, limit_choices_to=TOUR_CHOICES)
+    tour_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     tour_id = models.PositiveIntegerField()
     tour = GenericForeignKey('tour_type', 'tour_id')
     round = models.PositiveSmallIntegerField()
