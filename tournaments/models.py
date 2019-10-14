@@ -19,7 +19,7 @@ class LeagueTour(BaseTourModel):
 
 class KnockoutTour(BaseTourModel):
     round_number = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(32)])
-    knockout_legs = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(2)], default=1)
+    knockout_legs = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(2)], default=2)
     final_legs = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(2)], default=1)
 
 
