@@ -74,6 +74,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'tournamentor.wsgi.application'
 
+LOGIN_REDIRECT_URL = ''
+
+LOGIN_URL = '/login'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases

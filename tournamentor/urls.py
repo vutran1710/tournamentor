@@ -23,7 +23,10 @@ from tournaments.views import (
     CreateLeagueView,
     CreateKnockoutView,
 )
-from .views import HomeView
+from .views import (
+    HomeView,
+    LoginView,
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -33,5 +36,6 @@ urlpatterns = [
     path('knockout', KnockoutTourListView.as_view(), name='knockout-tour-list'),
     path('new-league', CreateLeagueView.as_view(), name='create-league-form'),
     path('new-knockout', CreateKnockoutView.as_view(), name='create-knockout-form'),
+    path('login', LoginView.as_view(), name='login-view'),
     path('', HomeView.as_view(), name='home-view'),
 ]
