@@ -20,22 +20,63 @@
 
     <form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
       <div class="form-row">
-        {{ form.username.errors }}
         {{ form.username.label_tag }} {{ form.username }}
       </div>
       <div class="form-row">
-        {{ form.password.errors }}
         {{ form.password.label_tag }} {{ form.password }}
       </div>
       <div class="form-row">
-        {{ form.secret.errors }}
-        {{ form.secret.label_tag }} {{ form.secret }}
-        <input type="hidden" name="next" value="{{ next }}">
+        <h3 style="text-align:center;margin-bottom:20px;">or use your secret token</h3>
+        <ul class="secret-list">
+          <li><input name="secret_1" type="text" value="" maxlength="1" oninput="changeSecret(1)" /></li>
+          <li><input name="secret_2" type="text" value="" maxlength="1" /></li>
+          <li><input name="secret_3" type="text" value="" maxlength="1" /></li>
+          <li><input name="secret_4" type="text" value="" maxlength="1" /></li>
+          <li><input name="secret_5" type="text" value="" maxlength="1" /></li>
+          <li><input name="secret_6" type="text" value="" maxlength="1" /></li>
+        </ul>
       </div>
+      {{ form.secret }}
+      <input type="hidden" name="next" value="{{ next }}">
       <div class="submit-row">
         <label>&nbsp;</label><input type="submit" value="Log in">
       </div>
     </form>
-
   </div>
+
+  <style>
+   * {
+     box-sizing: border-box;
+   }
+   .secret-list {
+     padding: 0;
+     display: flex;
+     justify-content: space-between;
+   }
+   .secret-list li {
+     list-style-type: none;
+     display: inline-block;
+     width: 12%;
+   }
+   .secret-list input {
+     border-radius: 0;
+     width: 100%;
+     line-height: 24px;
+     font-size: 25px;
+     font-weight: bold;
+     height: 50px;
+     text-align: center;
+   }
+  </style>
+  <script>
+   var secretInput = document.getElementById('id_secret')
+   function setSecretValue(charList) {
+     secretInput.value = charList.join()
+   }
+   var defaultValue = ['', '', '', '', '', '']
+   function changeSecret(idx) {
+     // Joining all secret vaues
+   }
+  </script>
+
 {% endblock %}

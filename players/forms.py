@@ -11,7 +11,7 @@ class CustomAdminLoginForm(AuthenticationForm):
         strip=False,
         label="SECRET",
         required=False,
-        widget=TextInput(attrs={'autofocus': True}),
+        widget=TextInput(attrs={'hidden': True}),
     )
 
     error_messages = {
