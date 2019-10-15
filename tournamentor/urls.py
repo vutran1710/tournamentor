@@ -13,10 +13,15 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
+# from django.contrib import admin
+from players.admin import admin_site
 from django.urls import path
 from clubs.views import ClubListView
-from players.views import PlayerListView
+from players.views import (
+    PlayerListView,
+    SignupView,
+    SigupSuccessView,
+)
 from tournaments.views import (
     LeagueTourListView,
     KnockoutTourListView,
@@ -29,7 +34,7 @@ from .views import (
 )
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin_site.urls),
     path('clubs', ClubListView.as_view(), name='club-list'),
     path('players', PlayerListView.as_view(), name='player-list'),
     path('leagues', LeagueTourListView.as_view(), name='league-tour-list'),
@@ -37,5 +42,7 @@ urlpatterns = [
     path('new-league', CreateLeagueView.as_view(), name='create-league-form'),
     path('new-knockout', CreateKnockoutView.as_view(), name='create-knockout-form'),
     path('login', LoginView.as_view(), name='login-view'),
+    path('signup', SignupView.as_view(), name='signup-view'),
+    path('signup-success', SigupSuccessView.as_view(), name='signup-success'),
     path('', HomeView.as_view(), name='home-view'),
 ]
