@@ -8,6 +8,9 @@ class LoginView(BaseLoginView):
     redirect_authenticated_user = True
     authentication_form = UserLoginForm
 
+    def get_success_url(self):
+        return self.request.GET.get('next')
+
 
 class HomeView(TemplateView):
     template_name = 'index.html'

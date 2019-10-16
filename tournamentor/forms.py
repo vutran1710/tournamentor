@@ -1,5 +1,9 @@
-from django.forms import Form, CharField, ValidationError
 from django.contrib.auth import authenticate
+from django.forms import (
+    Form,
+    CharField,
+    ValidationError,
+)
 
 
 class UserLoginForm(Form):
