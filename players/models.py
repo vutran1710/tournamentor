@@ -13,10 +13,5 @@ class Profile(models.Model):
 
 
 class Player(models.Model):
-    name = models.TextField(unique=True)
-    position = models.CharField(max_length=300)
-    strength = models.TextField()
-    weakness = models.TextField()
-    stats = models.TextField()
-    scores = models.IntegerField(default=0, validators=[MinValueValidator(0)])
-    assists = models.IntegerField(default=0, validators=[MinValueValidator(0)])
+    name = models.CharField(max_length=100)
+    position = models.SmallIntegerField(default=0, validators=[MinValueValidator(0)])

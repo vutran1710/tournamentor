@@ -8,13 +8,14 @@ from games.models import Game
 class BaseTourModel(models.Model):
     name = models.CharField(max_length=300, unique=True)
     team_number = models.IntegerField(validators=[MinValueValidator(2), MaxValueValidator(32)])
+    player_per_team = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(4)])
 
     class Meta:
         abstract = True
 
 
 class LeagueTour(BaseTourModel):
-    pass
+    double_round = models.BooleanField(default=False)
 
 
 class KnockoutTour(BaseTourModel):
