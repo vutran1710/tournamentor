@@ -1,7 +1,7 @@
-from django.contrib import admin
+from players.admin import admin_site
 from .models import LeagueTour, KnockoutTour, Fixture
 
 
-admin.site.register(LeagueTour)
-admin.site.register(KnockoutTour)
-admin.site.register(Fixture)
+admin_site.register(LeagueTour)
+admin_site.register(KnockoutTour)
+admin_site.register(Fixture)

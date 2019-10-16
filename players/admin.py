@@ -1,6 +1,5 @@
 from django.contrib.admin import AdminSite
-from django.contrib import admin
-from .models import Player
+from .models import Player, Profile
 from .forms import CustomAdminLoginForm
 
 
@@ -9,4 +8,5 @@ class CustomLoginAdminSite(AdminSite):
 
 
 admin_site = CustomLoginAdminSite()
-admin.site.register(Player)
+admin_site.register(Profile)
+admin_site.register(Player)

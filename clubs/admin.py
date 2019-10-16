@@ -1,5 +1,5 @@
-from django.contrib import admin
+from players.admin import admin_site
 from .models import Club
 
 
-admin.site.register(Club)
+admin_site.register(Club)

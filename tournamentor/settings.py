@@ -20,16 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '*gamet(k96dsv$n8o^$r+g9a-&0ptu*h6t77c7wiv&u5^x^qyk'
+SECRET_KEY = '&)+a%8p0wx+dcdvfsjnq)2$u-)an!%g@-g)9cdy23s_lz0jjdz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
-INTERNAL_IPS = ['127.0.0.1']
-
-# Application definition
 
 AUTHENTICATION_BACKENDS = (
     'players.auth.AuthBackend',

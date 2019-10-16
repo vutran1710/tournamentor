@@ -1,9 +1,9 @@
-from django.contrib import admin
+from players.admin import admin_site
 from .models import (
     Team,
     Game
 )
 
 
-admin.site.register(Team)
-admin.site.register(Game)
+admin_site.register(Team)
+admin_site.register(Game)
