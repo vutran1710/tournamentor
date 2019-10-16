@@ -75,7 +75,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'tournamentor.wsgi.application'
 
-LOGIN_REDIRECT_URL = ''
+LOGIN_REDIRECT_URL = '/'
 
 LOGIN_URL = '/login'
 

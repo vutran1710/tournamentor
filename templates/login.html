@@ -1,5 +1,15 @@
-<h2>You must login</h2>
-<br>
-<p>
-  Or try <a href="/signup">signinng up </a>
-</p>
+{% if user.is_authenticated %}
+  <p>Welcome, {{ user.email }}. Thanks for logging in.</p>
+{% else %}
+  <p>Welcome, new user. Please log in.</p>
+  <hr>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+  </form>
+  <hr>
+  <p>
+    Or try <a href="/signup">signinng up </a>
+  </p>
+{% endif %}
