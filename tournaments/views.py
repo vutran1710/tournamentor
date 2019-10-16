@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
 from .models import LeagueTour, KnockoutTour
@@ -13,11 +14,11 @@ class KnockoutTourListView(ListView):
     paginate_by = 100
 
 
-class CreateLeagueView(CreateView):
+class CreateLeagueView(LoginRequiredMixin, CreateView):
     model = LeagueTour
     fields = ['name', 'team_number']
 
 
-class CreateKnockoutView(CreateView):
+class CreateKnockoutView(LoginRequiredMixin, CreateView):
     model = KnockoutTour
     fields = ['name', 'team_number', 'round_number', 'knockout_legs', 'final_legs']

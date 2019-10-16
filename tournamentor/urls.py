@@ -16,6 +16,7 @@ Including another URLconf
 # from django.contrib import admin
 from players.admin import admin_site
 from django.urls import path
+from django.contrib.auth.views import LogoutView
 from clubs.views import ClubListView
 from players.views import (
     PlayerListView,
@@ -42,6 +43,7 @@ urlpatterns = [
     path('new-league', CreateLeagueView.as_view(), name='create-league-form'),
     path('new-knockout', CreateKnockoutView.as_view(), name='create-knockout-form'),
     path('login', LoginView.as_view(), name='login-view'),
+    path('logout', LogoutView.as_view(), name='logout-view'),
     path('signup', SignupView.as_view(), name='signup-view'),
     path('signup-success', SigupSuccessView.as_view(), name='signup-success'),
     path('', HomeView.as_view(), name='home-view'),

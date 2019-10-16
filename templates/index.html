@@ -1,4 +1,7 @@
 <h1>Tournamentor</h1>
+{% if user.is_authenticated %}
+  You can <a href="/logout">log out</a> here
+{% endif %}
 <hr>
 <a href="/new-league">Create new league</a>
 <a href="/new-knockout">Create new knockout tour</a>
