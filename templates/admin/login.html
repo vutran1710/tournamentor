@@ -28,12 +28,12 @@
       <div class="form-row">
         <h3 style="text-align:center;margin-bottom:20px;">or use your secret token</h3>
         <ul class="secret-list">
-          <li><input name="secret_1" type="text" value="" maxlength="1" oninput="changeSecret(1)" /></li>
-          <li><input name="secret_2" type="text" value="" maxlength="1" /></li>
-          <li><input name="secret_3" type="text" value="" maxlength="1" /></li>
-          <li><input name="secret_4" type="text" value="" maxlength="1" /></li>
-          <li><input name="secret_5" type="text" value="" maxlength="1" /></li>
-          <li><input name="secret_6" type="text" value="" maxlength="1" /></li>
+          <li><input id="secret_1" type="text" value="" maxlength="1" /></li>
+          <li><input id="secret_2" type="text" value="" maxlength="1" /></li>
+          <li><input id="secret_3" type="text" value="" maxlength="1" /></li>
+          <li><input id="secret_4" type="text" value="" maxlength="1" /></li>
+          <li><input id="secret_5" type="text" value="" maxlength="1" /></li>
+          <li><input id="secret_6" type="text" value="" maxlength="1" /></li>
         </ul>
       </div>
       {{ form.secret }}
@@ -71,12 +71,19 @@
   <script>
    var secretInput = document.getElementById('id_secret')
    function setSecretValue(charList) {
-     secretInput.value = charList.join()
+     secretInput.value = charList.join("")
    }
    var defaultValue = ['', '', '', '', '', '']
    function changeSecret(idx) {
-     // Joining all secret vaues
+     return function (event) {
+       defaultValue[idx - 1] = event.target.value
+       setSecretValue(defaultValue)
+     }
    }
+   [1, 2, 3, 4, 5, 6].forEach(idx => {
+     const inputEl = document.getElementById(`secret_${idx}`)
+     inputEl.addEventListener('input', changeSecret(idx))
+   })
   </script>
 
 {% endblock %}
