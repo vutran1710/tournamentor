@@ -1,13 +1,20 @@
-def scheduler(teams):
+def round_robin_scheduler(teams: list) -> dict:
     """Round robin scheduling algorithm
     """
+    if len(teams) % 2 != 0:
+        """If number of teams is odd, we add a fake Team to the existing team list
+        """
+        teams.append(None)
+
     number_of_rounds = len(teams) - 1
     game_per_round = int(len(teams) / 2)
     matches = {}
+
     for round in range(number_of_rounds):
         games = []
-        polar = teams[round]
-        games.append((polar, teams[-1]))
+
+        if teams[-1] is not None:
+            games.append((teams[round], teams[-1]))
 
         for idx in range(1, game_per_round):
             home = round - idx
