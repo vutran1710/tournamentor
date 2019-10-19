@@ -25,6 +25,7 @@ from players.views import (
 )
 from tournaments.views import (
     LeagueTourListView,
+    LeagueTourDetailView,
     KnockoutTourListView,
     CreateLeagueView,
     CreateKnockoutView,
@@ -39,6 +40,7 @@ urlpatterns = [
     path('clubs', ClubListView.as_view(), name='club-list'),
     path('players', PlayerListView.as_view(), name='player-list'),
     path('leagues', LeagueTourListView.as_view(), name='league-tour-list'),
+    path('leagues/<int:pk>', LeagueTourDetailView.as_view(), name='league-detail-view'),
     path('knockout', KnockoutTourListView.as_view(), name='knockout-tour-list'),
     path('new-league', CreateLeagueView.as_view(), name='create-league-form'),
     path('new-knockout', CreateKnockoutView.as_view(), name='create-knockout-form'),
