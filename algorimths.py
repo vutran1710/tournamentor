@@ -1,5 +1,6 @@
-def round_robin_scheduler(teams: list) -> dict:
+def round_robin_scheduler(teams: list, callback=None) -> dict:
     """Round robin scheduling algorithm
+    - Refer to https://en.wikipedia.org/wiki/Round-robin_tournament#Scheduling_algorithm
     """
     if len(teams) % 2 != 0:
         """If number of teams is odd, we add a fake Team to the existing team list
@@ -14,13 +15,19 @@ def round_robin_scheduler(teams: list) -> dict:
         games = []
 
         if teams[-1] is not None:
-            games.append((teams[round], teams[-1]))
+            match = (teams[round], teams[-1],)
+            games.append(match) if not callback else callback(match, round)
 
         for idx in range(1, game_per_round):
             home = round - idx
             away = round + idx if round + idx < len(teams)-1 else (round + idx) - (len(teams) - 1)
-            games.append((teams[:len(teams)-1][home], teams[:len(teams)-1][away],))
+            home_team = teams[:len(teams)-1][home]
+            away_team = teams[:len(teams)-1][away]
+            match = (home_team, away_team,)
+            games.append(match) if not callback else callback(match, round)
 
-        matches.update({round: games})
+        if not callback:
+            matches.update({round: games})
 
-    return matches
+    if not callback:
+        return matches
