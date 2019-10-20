@@ -1,1 +1,20 @@
 <h1>LeagueTour Detail: {{ league.name }}</h1>
+
+<hr>
+<h3>Fixtures</h3>
+<ul>
+  {% for f in fixtures %}
+    <li>
+      <div>Round: {{ f.round }}</div>
+      <div>-- Team {{ f.game.home_team.name }}  -vs-  Team {{ f.game.away_team.name }} --</div>
+    </li>
+  {% endfor %}
+</ul>
+
+<hr>
+<h3>Teams</h3>
+<ul>
+  {% for t in teams %}
+    <li>Team: {{ t.name }}</li>
+  {% endfor %}
+</ul>

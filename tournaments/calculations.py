@@ -23,7 +23,7 @@ def create_league_tour(league_instance):
             return name
 
         players = [Player.objects.create(name=_player_name(playid)) for playid in range(player_per_team)]
-        team = Team(player_a=players[0])
+        team = Team(player_a=players[0], tour=league_instance, name='LT{}-T{}'.format(league_instance.id, idx))
         team.player_b = players[1] if len(players) > 2 else None
         team.player_c = players[2] if len(players) > 3 else None
         team.player_d = players[3] if len(players) == 4 else None

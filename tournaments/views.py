@@ -2,10 +2,12 @@ from django.db import transaction
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.contenttypes.models import ContentType
 from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from .models import LeagueTour, KnockoutTour
+from games.models import Team
+from .models import LeagueTour, KnockoutTour, Fixture
 from .calculations import create_league_tour
 
 
@@ -17,6 +19,16 @@ class LeagueTourListView(ListView):
 class LeagueTourDetailView(DetailView):
     model = LeagueTour
     context_object_name = 'league'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        league = context['league']
+        tour_type = ContentType.objects.get_for_model(LeagueTour)
+        fixtures = Fixture.objects.filter(tour_type=tour_type, tour_id=league.id)
+        teams = Team.objects.filter(tour_type=tour_type, tour_id=league.id)
+        context['fixtures'] = fixtures
+        context['teams'] = teams
+        return context
 
 
 class KnockoutTourListView(ListView):
