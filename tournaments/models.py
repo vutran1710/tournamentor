@@ -31,3 +31,8 @@ class Fixture(models.Model):
     tour_id = models.PositiveIntegerField()
     tour = GenericForeignKey('tour_type', 'tour_id')
     round = models.PositiveSmallIntegerField()
+
+    class Meta:
+        indexes = [
+            models.Index(fields=['tour_type', 'tour_id'])
+        ]
